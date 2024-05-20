@@ -8,7 +8,7 @@ exports.pageNotFound = exports.serverLogger = exports.dbLogger = exports.userslo
 const logger_dev_1 = __importDefault(require("./logger.dev"));
 const logger_prod_1 = __importDefault(require("./logger.prod"));
 const logger = process.env.NODE_ENV === "production" ? logger_prod_1.default : logger_dev_1.default;
-exports.userslogger = logger("users");
+exports.userslogger = logger("users-logger");
 exports.dbLogger = logger("DB");
 exports.serverLogger = logger("server");
 exports.pageNotFound = logger("pageNotFound");
