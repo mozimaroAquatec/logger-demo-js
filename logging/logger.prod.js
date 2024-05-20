@@ -27,7 +27,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const winston_1 = require("winston");
 const { combine, timestamp, errors, prettyPrint, json, metadata } = winston_1.format;
 const path = __importStar(require("path"));
-const winston_mongodb_1 = require("winston-mongodb");
+const { MongoDB, } = require("winston-mongodb");
 // MongoDB connection URI
 const mongoUri = process.env.MONGO_URI;
 // Function to create a production logger
@@ -39,7 +39,7 @@ const createProdLogger = (serviceName) => {
             new winston_1.transports.File({
                 filename: path.join(__dirname, `logs/prod/${serviceName}.log`),
             }),
-            new winston_mongodb_1.MongoDB({
+            new MongoDB({
                 level: "info",
                 db: process.env.MONGO_URI, // Use the MongoDB URI directly
                 options: { useUnifiedTopology: true },

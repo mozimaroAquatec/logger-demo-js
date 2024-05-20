@@ -10,7 +10,7 @@ const usersRoutes = express_1.default.Router();
 // Route for subscribing to MQTT messages using GET method
 usersRoutes.post("/", users_controllers_1.createUser);
 usersRoutes.get("/", users_controllers_1.getUsers);
-usersRoutes.get("/error", users_controllers_1.getUsers);
+usersRoutes.get("/error", users_controllers_1.thorwUserError);
 usersRoutes.delete("/", users_controllers_1.deleteUsers);
 // Export the router instance
 exports.default = usersRoutes;
