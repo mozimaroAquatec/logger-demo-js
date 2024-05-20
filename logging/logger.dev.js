@@ -29,7 +29,7 @@ const path = __importStar(require("path"));
 // Function to create a development logger
 const createDevLogger = (serviceName) => {
     return (0, winston_1.createLogger)({
-        level: "debug",
+        level: "info",
         format: combine(timestamp({ format: "YYYY-MM-DD HH:mm:ss" }), errors({ stack: true }), json()),
         transports: [
             new winston_1.transports.Console({
