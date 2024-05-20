@@ -28,6 +28,7 @@
     "mongoose": "^8.3.4",
     "mqtt": "^5.5.5",
     "typescript": "^5.3.0-dev.20231030",
-    "winston": "^3.13.0"
+    "winston": "^3.13.0",
+    "winston-mongodb": "^5.1.1"
   }
 }
