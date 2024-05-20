@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUsers = exports.getUsers = exports.createUser = void 0;
+exports.thorwUserError = exports.deleteUsers = exports.getUsers = exports.createUser = void 0;
 // Importing necessary modules
 const error_handler_1 = __importDefault(require("../utils/error.handler")); // Importing custom error handler
 const users_model_1 = __importDefault(require("../models/users.model")); // Importing Helioss model
@@ -93,4 +93,23 @@ const deleteUsers = async function (req, res) {
     }
 };
 exports.deleteUsers = deleteUsers;
+/**
+ * @desc  Controller function to handle getting all energies
+ * @param DELETE /
+ * @param PUBLIC
+ **/
+const thorwUserError = async function (req, res) {
+    try {
+        // Query the database for all Energies records
+        logging_1.userslogger.error("user error example", new error_handler_1.default(400, "user error example"));
+        return res.status(200).json(new success_response_1.SuccessResponse(200, "user error example"));
+    }
+    catch (error) {
+        // Handle errors
+        res.status(500).json(new error_handler_1.default(500, "Internal server error"));
+        logging_1.userslogger.error("deleteUsers", new error_handler_1.default(500, `${error}`));
+        throw new error_handler_1.default(500, `thorwUserError : ${error}`);
+    }
+};
+exports.thorwUserError = thorwUserError;
 //# sourceMappingURL=users.controllers.js.map
