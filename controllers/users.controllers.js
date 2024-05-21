@@ -24,7 +24,7 @@ const createUser = async function (req, res) {
             return res
                 .status(400)
                 .json(new error_handler_1.default(400, `${error.details[0].message}`));
-        logging_1.userslogger.info("user created successfully", {
+        logging_1.usersLogger.info("user created successfully", {
             method: "POST",
             status: 201,
         });
@@ -36,7 +36,7 @@ const createUser = async function (req, res) {
     catch (error) {
         // Handle errors
         res.status(500).json(new error_handler_1.default(500, "Internal server error"));
-        logging_1.userslogger.error("createUser", new error_handler_1.default(500, `${error}`));
+        logging_1.usersLogger.error("createUser", new error_handler_1.default(500, `${error}`));
         throw new error_handler_1.default(500, `create user error: ${error}`);
     }
 };
@@ -51,7 +51,7 @@ const getUsers = async function (req, res) {
         // Query the database for all Energies records
         const users = await users_model_1.default.find();
         // Return success response with Energies data
-        logging_1.userslogger.info("get users success", {
+        logging_1.usersLogger.info("get users success", {
             method: "GET",
             status: 200,
         });
@@ -62,7 +62,7 @@ const getUsers = async function (req, res) {
     catch (error) {
         // Handle errors
         res.status(500).json(new error_handler_1.default(500, "Internal server error"));
-        logging_1.userslogger.error("getUsers", new error_handler_1.default(500, `${error}`));
+        logging_1.usersLogger.error("getUsers", new error_handler_1.default(500, `${error}`));
         throw new error_handler_1.default(500, `getUsers : ${error}`);
     }
 };
@@ -77,7 +77,7 @@ const deleteUsers = async function (req, res) {
         // Query the database for all Energies records
         await users_model_1.default.deleteMany();
         // Return success response with Energies data
-        logging_1.userslogger.info("users deleted successfully", {
+        logging_1.usersLogger.info("users deleted successfully", {
             method: "GET",
             status: 200,
         });
@@ -88,7 +88,7 @@ const deleteUsers = async function (req, res) {
     catch (error) {
         // Handle errors
         res.status(500).json(new error_handler_1.default(500, "Internal server error"));
-        logging_1.userslogger.error("deleteUsers", new error_handler_1.default(500, `${error}`));
+        logging_1.usersLogger.error("deleteUsers", new error_handler_1.default(500, `${error}`));
         throw new error_handler_1.default(500, `deleteUsers : ${error}`);
     }
 };
@@ -101,13 +101,13 @@ exports.deleteUsers = deleteUsers;
 const thorwUserError = async function (req, res) {
     try {
         // Query the database for all Energies records
-        logging_1.userslogger.error("user error example", new error_handler_1.default(400, "user error example"));
+        logging_1.usersLogger.error("user error example", new error_handler_1.default(400, "user error example"));
         return res.status(200).json(new success_response_1.SuccessResponse(200, "user error example"));
     }
     catch (error) {
         // Handle errors
         res.status(500).json(new error_handler_1.default(500, "Internal server error"));
-        logging_1.userslogger.error("deleteUsers", new error_handler_1.default(500, `${error}`));
+        logging_1.usersLogger.error("deleteUsers", new error_handler_1.default(500, `${error}`));
         throw new error_handler_1.default(500, `thorwUserError : ${error}`);
     }
 };

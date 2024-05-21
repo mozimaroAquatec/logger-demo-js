@@ -24,18 +24,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const winston_1 = require("winston");
-const { combine, timestamp, printf, colorize, errors, json, prettyPrint } = winston_1.format;
+const { combine, timestamp, printf, colorize, errors, align } = winston_1.format;
 const path = __importStar(require("path"));
-// Function to create a development logger
 const createDevLogger = (serviceName) => {
     return (0, winston_1.createLogger)({
         level: "info",
-        format: combine(timestamp({ format: "YYYY-MM-DD HH:mm:ss" }), errors({ stack: true }), json()),
         transports: [
-            new winston_1.transports.Console({
-                format: combine(prettyPrint() // Use prettyPrint only for console output
-                ),
-            }),
+            new winston_1.transports.Console(),
             new winston_1.transports.File({
                 filename: path.join(__dirname, `logs/dev/${serviceName}.log`),
             }),

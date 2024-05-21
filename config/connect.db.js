@@ -10,8 +10,10 @@ const logging_1 = require("../logging");
 mongoose_1.default.set("strictQuery", true);
 const connectDB = async () => {
     try {
+        const DB = logging_1.dbLogger.startTimer();
         await mongoose_1.default.connect(process.env.MONGO_URI);
-        logging_1.dbLogger.info("data base connected successfully");
+        DB.done({ message: "data base connected successfully" });
+        // dbLogger.done("data base connected successfully");
     }
     catch (error) {
         logging_1.dbLogger.error("mongoose connect error", new error_handler_1.default(500, `${error}`));

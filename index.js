@@ -12,11 +12,14 @@ const cors_1 = __importDefault(require("cors"));
 require("./config/env.config");
 const logging_1 = require("./logging");
 const page_not_found_1 = require("./middlewares/page.not.found");
+const morgan_1 = __importDefault(require("morgan"));
 // Creating an Express app
 const app = (0, express_1.default)();
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+// Use Morgan middleware with the custom format and stream
+app.use((0, morgan_1.default)("dev"));
 // Connecting to MongoDB
 (0, connect_db_1.default)();
 // Using the energy routes

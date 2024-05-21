@@ -7,7 +7,7 @@ exports.logNotFound = void 0;
 const logging_1 = require("../logging");
 const error_handler_1 = __importDefault(require("../utils/error.handler"));
 function logNotFound(req, res) {
-    logging_1.pageNotFound.info(`Page not found`, { url: req.path });
+    logging_1.pageNotFoundLogger.info(`Page not found`, { url: req.path });
     res.status(404).json(new error_handler_1.default(404, "page not found")); // Send 404 response
 }
 exports.logNotFound = logNotFound;
